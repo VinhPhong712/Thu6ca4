@@ -22,5 +22,5 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./       # Thư mục code trên repo
-          server-dir: /www    # Thư mục trên server Somee.com
+          server-dir: /www/   # Thư mục trên server Somee.com
           dry-run: false      # true nếu chỉ muốn test kết nối
