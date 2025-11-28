@@ -1,0 +1,26 @@
+name: FTP Deploy to Somee.com
+
+on:
+  push:
+    branches:
+      - main   # Khi push lên nhánh main sẽ deploy
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.HOST }}
+          username: ${{ secrets.U }}
+          password: ${{ secrets.PASS }}
+          port: 21
+          protocol: ftp
+          local-dir: ./       # Thư mục code trên repo
+          server-dir: /www    # Thư mục trên server Somee.com
+          dry-run: false      # true nếu chỉ muốn test kết nối
